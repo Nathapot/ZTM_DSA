@@ -112,5 +112,3 @@ myLinkedList.insert(2, 99);
 console.log(myLinkedList.printList());
 myLinkedList.insert(20, 88);
 console.log(myLinkedList.printList());
-
-// console.log(JSON.stringify(myLinkedList));
