@@ -114,3 +114,7 @@ myLinkedList.insert(20, 88);
 console.log(myLinkedList.printList());
 myLinkedList.insert(3, 151);
 console.log(myLinkedList.printList());
+myLinkedList.insert(4, 213);
+console.log(myLinkedList.printList());
+myLinkedList.insert(5, 319);
+console.log(myLinkedList.printList());
