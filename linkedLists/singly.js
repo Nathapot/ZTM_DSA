@@ -98,7 +98,30 @@ class LinkedList {
     return this.printList();
   }
 
-  remove(index) {}
+  remove(index) {
+    console.log("remove: " + index);
+    if (index > this.length) {
+      console.log("Index is out of the list");
+      return this.printList();
+    }
+    let counter = 0;
+    let tempCurr = this.head;
+    while (counter <= index) {
+      if (counter === index - 1) {
+        if (tempCurr.next.next !== null) {
+          tempCurr.next = tempCurr.next.next;
+          this.length -= 1;
+          return;
+        } else {
+          tempCurr.next = null;
+          this.length -= 1;
+          return;
+        }
+      }
+      tempCurr = tempCurr.next;
+      counter += 1;
+    }
+  }
 }
 
 const myLinkedList = new LinkedList(10);
@@ -109,12 +132,12 @@ myLinkedList.prepend(3);
 myLinkedList.prepend(1);
 
 myLinkedList.insert(2, 99);
-console.log(myLinkedList.printList());
 myLinkedList.insert(20, 88);
-console.log(myLinkedList.printList());
 myLinkedList.insert(3, 151);
-console.log(myLinkedList.printList());
 myLinkedList.insert(4, 213);
-console.log(myLinkedList.printList());
 myLinkedList.insert(5, 319);
+
+console.log(myLinkedList.printList());
+myLinkedList.remove(9);
+myLinkedList.remove(10);
 console.log(myLinkedList.printList());
