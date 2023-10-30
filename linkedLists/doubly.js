@@ -42,7 +42,33 @@ class DoublyLinkedList {
     return this;
   }
 
-  insert() {}
+  insert(index, value) {
+    if (index > this.length) {
+      return this.append(value);
+    }
+    if (index <= 0) {
+      return this.prepend(value);
+    }
+    const newNode = new Node(value);
+    let counter = 0;
+    const indexBeforeInterestedNode = index - 1;
+    let walkingNode = this.head;
+    while (counter <= indexBeforeInterestedNode) {
+      // insert newNode to index 2 -> walking node will stop at index (2-1 = 1) and use to be based node to keep existing connection and set new connection to new node
+      //      *
+      // 0 -- 1 -- 2 -- 3
+      //       \   99
+      if (counter === indexBeforeInterestedNode) {
+        newNode.next = walkingNode.next;
+        newNode.prev = walkingNode;
+        walkingNode.next = newNode;
+        this.length += 1;
+      }
+      walkingNode = walkingNode.next;
+      counter += 1;
+    }
+    return this;
+  }
 
   remove() {}
 }
@@ -57,3 +83,10 @@ doublyLinkedList.prepend(3);
 doublyLinkedList.prepend(2);
 doublyLinkedList.prepend(1);
 console.log(doublyLinkedList);
+doublyLinkedList.insert(10, 250);
+doublyLinkedList.insert(2, 666);
+doublyLinkedList.insert(-3, 777);
+doublyLinkedList.insert(1, 888);
+doublyLinkedList.insert(2, 1050);
+console.log(doublyLinkedList);
+console.log(doublyLinkedList.printList());
